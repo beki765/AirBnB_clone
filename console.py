@@ -29,7 +29,7 @@ def parse(arg):
         retl = [i.strip(",") for i in lexer]
         retl.append(curly_braces.group())
         return ret1
-    
+
 
 class HBNBCommand(cmd.Cmd):
     """Defines the HolbertonBnB command interpreter.
@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             del objdict["{}.{}".format(argl[0], argl[1])]
             storage.save()
-       
+
     def do_all(self, arg):
         """Usage: all or all <class> or <class>.all()
         Display string representations of all instances of a given class.
@@ -141,11 +141,11 @@ class HBNBCommand(cmd.Cmd):
             objl = []
             for obj in storage.all().values():
                 if len(argl) > 0 and argl[0] == obj.__class__.__name__:
-                objl.append(obj.__str__())
+                    objl.append(obj.__str__())
                 elif len(argl) == 0:
                     objl.append(obj.__str__())
             print(objl)
-    
+
     def do_count(self, arg):
         """Usage: count <class> or <class>.count()
         Retrieve the number of instances of a given class."""
@@ -203,6 +203,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     obj.__dict__[k] = v
         storage.save()
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
